@@ -74,29 +74,4 @@ exports.addTimestampOnCreate = functions.firestore
 
         const timestamp = admin.firestore.FieldValue.serverTimestamp();
 
-        return db.collection('elementos').doc(elementoId).update({ timestamp: timestamp });
-    });
-    /*exports.almacenarEnArchivo = functions.database.ref('/elementos/{elementoId}')
-    .onDelete((snapshot, context) => {
-      const elementoId = context.params.elementoId;
-  
-      const elementoEliminado = snapshot.val();
-  
-      const fechaEliminacion = new Date();
-  
-      const timestampEliminacion = admin.firestore.Timestamp.fromDate(fechaEliminacion);
-  
-      elementoEliminado.timestamp_eliminacion = timestampEliminacion;
-  
-      const archivoRef = admin.database().ref('/Archivo');
-  
-      return archivoRef.child(elementoId).set(elementoEliminado)
-        .then(() => {
-          console.log(`Se almacenó el elemento con ID ${elementoId} en la colección "Archivo"`);
-          return null;
-        })
-        .catch(error => {
-          console.error(`Error al almacenar el elemento con ID ${elementoId} en la colección "Archivo":`, error);
-          return null;
-        });
-    });*/
+        return db.collection('elementos').doc(elementoId).update({ timestamp: timestamp });});
